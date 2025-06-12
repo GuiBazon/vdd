@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Carol ❤️ | Bazon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #ff4e4e 100%);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(-20vh) translateX(20vw); opacity: 0; }
+        }
+
+        .container {
+            padding-top: 15vh;
+            z-index: 1;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .mensagem {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .destaque {
+            font-size: 2em;
+            color: #ffeb3b;
+            text-shadow: 0 0 5px #ff5722;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff5722; }
+            to { text-shadow: 0 0 20px #ffeb3b; }
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #segredo {
+            margin-top: 30px;
+            font-size: 1.4em;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-background" id="heart-bg"></div>
+    <div class="container">
+        <h1>Carol, meu único e maior amor...</h1>
+        <p class="mensagem">Feliz Dia dos Namorados! ❤️</p>
+        <p class="destaque">"Eu te amo mais."</p>        
+        <p> Eu te amo muito mais do que você pode imaginar. </p>
+        <button id="surpresa">É vdd</button>
+        <div id="segredo" class="hidden">
+            <p>Lê o arquivo README aí, pfv 🥺</p>
+            <p>- Bazon ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function createHearts() {
+            const heartBg = document.getElementById('heart-bg');
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animation = `float ${Math.random() * 10 + 5}s linear infinite`;
+                heartBg.appendChild(heart);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            createHearts();
+
+            const botao = document.getElementById('surpresa');
+            const segredo = document.getElementById('segredo');
+
+            botao.addEventListener('click', function () {
+                segredo.classList.toggle('hidden');
+
+                if (!segredo.classList.contains('hidden')) {
+                    for (let i = 0; i < 10; i++) {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = '❤️';
+                        heart.style.position = 'fixed';
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.bottom = '0';
+                        heart.style.fontSize = '30px';
+                        heart.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
+                        document.body.appendChild(heart);
+                        setTimeout(() => heart.remove(), 5000);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
